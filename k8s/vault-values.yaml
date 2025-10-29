@@ -1,0 +1,22 @@
+server:
+  dataStorage:
+    enabled: true
+    size: 10Gi
+    storageClass: standard
+    accessMode: ReadWriteOnce
+  ha:
+    enabled: false
+  standalone:
+    enabled: true
+    config: |
+      storage "file" {
+        path = "/vault/data"
+      }
+      listener "tcp" {
+        address     = "0.0.0.0:8200"
+        tls_disable = 1
+      }
+      ui = true
+  service:
+    type: NodePort
+    nodePort: 30200

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vault-test-pod
+  namespace: monitoring
+  annotations:
+    vault.hashicorp.com/agent-inject: "true"
+    vault.hashicorp.com/role: "sre-service"
+    vault.hashicorp.com/agent-inject-secret-sre-secret.txt: "secret/test/sre-secret"
+spec:
+  serviceAccountName: sre-app
+  containers:
+  - name: test
+    image: busybox
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        echo "Подключаемся к Vault..."
+        sleep 3600

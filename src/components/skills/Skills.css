@@ -1,0 +1,307 @@
+.skills .inner-content {
+    padding-bottom: 50px;
+}
+
+.skills-description {
+    max-width: 700px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.skills-description h3 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.skills-description p {
+    font-size: var(--normal-font-size);
+}
+
+.skills-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center; /* ✅ Центрирует сетку */
+  justify-items: center;   /* ✅ Центрирует сами карточки */
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;      /* ✅ Центрирует текст */
+}
+
+.education {
+  width: 100%;
+}
+
+.education .label {
+    color: #fff;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background: var(--second-color);
+    display: inline-block;
+}
+
+.education-list .item {
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 6px;
+    background: var(--card-bg-color);
+    box-shadow: var(--box-shadow);
+    border-bottom: 3px solid var(--second-color);
+    transition: .3s linear;
+}
+
+.education-list .year {
+    margin-bottom: 10px;
+    font-size: var(--small-font-size);
+    color: var(--first-color);
+    font-weight: 500;
+    display: block;
+}
+
+.education-list p {
+    color: var(--third-color);
+}
+
+.education .bar {
+    background: var(--card-bg-color);
+    box-shadow: var(--box-shadow);
+    margin-top: 15px;
+    padding: 18px;
+    border-radius: 6px;
+    transition: .3s linear;
+}
+
+.education .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: var(--small-font-size);
+}
+
+.info span {
+    font-weight: 500;
+}
+
+.bar .line {
+    position: relative;
+    width: 100%;
+    height: 7px;
+    border-radius: 2px;
+    background: #c5cadf;
+}
+
+.bar .line::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--second-color);
+    border-radius: 2px;
+}
+
+.bar .html::before {
+    width: 95%;
+}
+
+.bar .css::before {
+    width: 85%;
+}
+
+.bar .javascript::before {
+    width: 85%;
+}
+
+.bar .jquery::before {
+    width: 80%;
+}
+
+.bar .php::before {
+    width: 75%;
+}
+
+.work-exp {
+    width: 100%;
+    max-width: 100%;
+}
+
+.work-exp .work-exp-title {
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.work-exp .experience-card {
+    background: var(--card-bg-color);
+    border-bottom: 3px solid var(--second-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 6px;
+    min-width: 320px;
+    width: 32%;
+    padding: 35px;
+    transition: .3s linear;
+}
+
+.upper h3 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.upper h5 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: var(--small-font-size);
+}
+
+.upper span {
+    color: var(--third-color);
+}
+
+.experience-card .hr {
+    width: 100%;
+    height: 2px;
+    margin: 10px 0 22px;
+    background: var(--liner-color);
+}
+
+.experience-card p {
+    margin-top: 22px;
+}
+
+.experience-card:hover,
+.education-list .item:hover,
+.bar:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+.skill-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 30px;
+}
+
+.skill-card {
+  background-color: var(--card-bg-color);
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.skill-title {
+  font-weight: 600;
+  color: #6c63ff;
+  margin-bottom: 8px;
+}
+
+.skill-subtitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.skill-desc {
+  font-size: 14px;
+  color: #555;
+}
+.bars {
+  margin-top: 20px;
+}
+.line {
+  position: relative;
+  width: 100%;
+  height: 7px;
+  border-radius: 2px;
+  background: #c5cadf; /* серый фон прогресс-бара */
+  overflow: hidden;
+}
+
+.line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--second-color); /* фиолетовый */
+  transition: width 0.5s ease;
+}
+
+.dark-theme .education-list p,
+.dark-theme .list-item .text,
+.dark-theme .description p {
+  color: #e5e7eb;
+}
+
+.dark-theme .label {
+  background: #8b7bff;
+  color: #fff;
+}
+#skills {
+  scroll-margin-top: 120px;
+}
+
+.project-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Модальное окно */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.image-modal img:hover {
+  transform: scale(1.02);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+background-color: var(--card-bg-color);
+color: var(--first-color);

@@ -1,0 +1,38 @@
+image: docker:24.0.7
+
+services:
+  - docker:24.0.7-dind
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_VERIFY: "1"
+  DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+  # Если используешь GitLab Container Registry:
+  CI_REGISTRY: gitlab.local.iti.domain
+  IMAGE_NAME: $CI_REGISTRY/kirill.netesov/react-portfolio
+
+stages:
+  - build
+  - deploy
+
+before_script:
+  - echo "Logging into GitLab Container Registry..."
+  - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+
+build:
+  stage: build
+  script:
+    - docker build -t $IMAGE_NAME:$CI_COMMIT_SHORT_SHA .
+    - docker push $IMAGE_NAME:$CI_COMMIT_SHORT_SHA
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to Kubernetes..."
+    - kubectl set image deployment/react-app react-app=$IMAGE_NAME:$CI_COMMIT_SHORT_SHA -n default
+  only:
+    - main

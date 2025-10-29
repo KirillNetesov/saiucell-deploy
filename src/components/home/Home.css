@@ -1,0 +1,96 @@
+.home {
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.media-icons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  gap: 15px;
+}
+
+.media-icons a {
+  color: var(--second-color);
+  font-size: 1.5rem;
+}
+
+.home-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0; /* Убираем отступ */
+  gap: 50px;
+}
+
+.text-zone {
+  max-width: 500px;
+}
+
+.text-zone h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.text-zone h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.text-zone p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.image-zone img {
+  max-width: 400px;
+  height: auto;
+}
+
+.scroll-down {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  font-size: 1rem;
+  color: var(--first-color);
+}
+.btn {
+  display: inline-block;
+  background-color: var(--second-color); /* фиолетовый */
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #5b50d6; /* чуть темнее фиолетовый */
+  transform: translateY(-2px);
+}
+.media-icons a {
+  color: var(--second-color);
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+}
+
+.media-icons a:hover {
+  transform: scale(1.2);
+  color: #8f80ff;
+  filter: drop-shadow(0 0 8px #8f80ff);
+}

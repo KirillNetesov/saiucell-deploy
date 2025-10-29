@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: saiucell
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: 'https://github.com/KirillNetesov/react-portfolio_new.git'
+    targetRevision: HEAD
+    path: kirill.netesov/k8s
+
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: saiucell
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

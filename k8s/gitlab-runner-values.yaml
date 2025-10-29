@@ -1,0 +1,47 @@
+gitlabUrl: https://gitlab.local.iti.domain/
+runnerRegistrationToken: "glrt-VXFR2qeKBZwMFvQ4Bsax"
+
+runners:
+  name: "k8s-runner"
+  executor: "kubernetes"
+  privileged: true
+  config: |
+    [[runners]]
+      name = "k8s-runner"
+      url = "https://gitlab.local.iti.domain/"
+      executor = "kubernetes"
+      [runners.kubernetes]
+        image = "alpine:latest"
+        privileged = true
+
+# Монтируем сертификат
+volumes:
+  - name: gitlab-ca-cert
+    secret:
+      secretName: gitlab-ca-cert
+volumeMounts:
+  - name: gitlab-ca-cert
+    mountPath: /etc/gitlab-runner/certs
+    readOnly: true
+
+# ✅ Добавляем root-права
+securityContext:
+  runAsUser: 0
+  runAsGroup: 0
+  fsGroup: 0
+  runAsNonRoot: false
+
+# 🧰 Добавляем initContainer для установки CA
+initContainers:
+  - name: install-ca-cert
+    image: alpine:latest
+    command:
+      - /bin/sh
+      - -c
+      - |
+        set -e
+        cp /etc/gitlab-runner/certs/gitlab.local.iti.domain.crt /usr/local/share/ca-certificates/gitlab.local.iti.domain.crt
+        update-ca-certificates 2>/dev/null || true
+    volumeMounts:
+      - name: gitlab-ca-cert
+        mountPath: /etc/gitlab-runner/certs
