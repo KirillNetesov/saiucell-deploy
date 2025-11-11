@@ -15,18 +15,18 @@ spec:
         app: node-exporter
     spec:
       containers:
-      - name: node-exporter
-        image: prom/node-exporter:v1.8.1
-        ports:
-        - containerPort: 9100
-          name: metrics
-        resources:
-          limits:
-            cpu: 100m
-            memory: 128Mi
-          requests:
-            cpu: 50m
-            memory: 64Mi
+        - name: node-exporter
+          image: prom/node-exporter:v1.8.1
+          ports:
+            - name: metrics
+              containerPort: 9100
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
 ---
 apiVersion: v1
 kind: Service
@@ -36,10 +36,10 @@ metadata:
   labels:
     app: node-exporter
 spec:
-  ports:
-  - name: metrics
-    port: 9100
-    targetPort: 9100
   selector:
     app: node-exporter
+  ports:
+    - name: metrics
+      port: 9100
+      targetPort: 9100
   type: ClusterIP
